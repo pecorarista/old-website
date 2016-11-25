@@ -5,13 +5,16 @@ html(lang=lang)
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width,initial-scale=1.0")
     title= title
-    link(rel='stylesheet', href='../../css/solarized-light.css')
-    link(rel='stylesheet', href='../../css/main.css')
-    script(src='../../js/MathJax.js')
-    script(src='../../js/highlight.pack.js')
+    link(rel='stylesheet', href='/public/css/solarized-light.css')
+    link(rel='stylesheet', href='/public/css/materialize.css')
+    link(rel='stylesheet', href='/public/css/main.css')
+    script(src='/public/js/MathJax.js')
+    script(src='/public/js/highlight.pack.js')
+    script(src='/public/js/materialize.css')
     script.
       hljs.initHighlightingOnLoad();
   body
     header
       nav
-    block content
+    .container
+      block content

@@ -1,0 +1,16 @@
+{
+  "rules": {
+    "brace-style": ["error", "1tbs"],
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "semi": ["error", "always"]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jquery": true,
+    "node": true
+  },
+  "extends": "eslint:recommended"
+}
