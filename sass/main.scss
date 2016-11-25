@@ -3,3 +3,9 @@ $black: #333;
 body {
   color: $black;
 }
+
+pre {
+  code {
+    font-family: 'Liberation Mono', monospace;
+  }
+}

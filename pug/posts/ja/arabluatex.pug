@@ -1,0 +1,10 @@
+extends ../../_layout
+
+block vars
+  - var title = 'LuaLaTeX でアラビア語を扱う'
+  - var lang = 'ja'
+
+block content
+  pre
+    code.latex
+      include ../../../code_snippet/arabluatex-example.tex

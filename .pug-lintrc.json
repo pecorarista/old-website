@@ -1,0 +1,5 @@
+{
+  "validateAttributeQuoteMarks": "'",
+  "validateIndentation": 2,
+  "validateLineBreaks": "LF"
+}

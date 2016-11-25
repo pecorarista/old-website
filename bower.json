@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "highlightjs": "^9.8.0",
-    "pdfjs-dist": "^1.6.348"
+    "pdfjs-dist": "^1.6.348",
+    "MathJax": "^2.7.0"
   }
 }
