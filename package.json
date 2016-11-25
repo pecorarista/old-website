@@ -1,0 +1,14 @@
+{
+  "name": "new-website",
+  "version": "0.0.0",
+  "description": "new website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miyazawa Akira",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "^1.8.0"
+  }
+}

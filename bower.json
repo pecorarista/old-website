@@ -1,0 +1,21 @@
+{
+  "name": "new-website",
+  "description": "new website",
+  "main": "index.js",
+  "authors": [
+    "Miyazawa Akira"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "highlightjs": "^9.8.0",
+    "pdfjs-dist": "^1.6.348"
+  }
+}
