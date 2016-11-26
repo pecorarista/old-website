@@ -6,16 +6,5 @@ block vars
 
 block content
   article
-    h1= title
-    h2 1. CaboCha のソースコードの取得
-    p インストール
-    h2 2. 設定
-    h2 3. コンパイル
-    p cabocha/java ディレクトリで make と打ち込んでコンパイルします。
-    h2 4. Scala からの利用例
-    pre
-      code.bash
-        include ../../../code_snippet/cabocha-scala-copy.bash
-    pre
-      code.scala
-        include ../../../code_snippet/CaboChaWrapperParser.scala
+    include ../../_header.pug
+    include ../../../markdown/posts/ja/cabocha-scala.html

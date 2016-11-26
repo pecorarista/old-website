@@ -1,4 +1,4 @@
-.PHONY: clean default server
+.PHONY: clean default pandoc server
 
 default:
 	"$(shell npm bin)/gulp"
