@@ -1,8 +1,9 @@
-import Control.Monad (when, unless)
-import Data.Traversable (traverse)
-import Data.Foldable (foldrM, traverse_)
+import Control.Monad (when)
+import Data.Foldable (traverse_, forM_)
+import qualified Data.Set as S
+import Data.Traversable (forM)
 import System.Directory (listDirectory, doesDirectoryExist)
-import System.FilePath.Posix (replaceExtension, (</>))
+import System.FilePath.Posix ((</>), replaceExtension, takeExtension)
 import Text.Pandoc.Definition (Pandoc)
 import Text.Pandoc.Error (PandocError)
 import Text.Pandoc.Readers.Markdown (readMarkdown)
@@ -12,34 +13,40 @@ import Text.Pandoc.Options (
     Extension(..),
     ReaderOptions(..),
     WriterOptions(..))
-import qualified Data.Set as S
+
 
 main :: IO ()
 main = do
-    xs <- getFilePaths [] "markdown"
-    traverse_ putStrLn xs
+    filePaths <- getFilePaths "markdown"
+    forM_ filePaths $ \filePath ->
+       when (takeExtension filePath == ".markdown") $
+            (defaultConverter . designateDestination) filePath
 
 
-getFilePaths :: [FilePath] -> FilePath -> IO [FilePath]
-getFilePaths filePaths directory = do
-    isDirectory <- doesDirectoryExist directory
-    if not isDirectory then
-        do
-            return (directory : filePaths)
-    else
-        do
-            xs <- listDirectory directory
-            let fs = map (directory </>) xs
-            getFilePaths filePaths (head fs)
+getFilePaths :: FilePath -> IO [FilePath]
+getFilePaths directory = do
+    ds <- listDirectory directory
+    paths <- forM ds $ \d -> do
+        let path = directory </> d
+        isDirectory <- doesDirectoryExist path
+        if isDirectory then
+            getFilePaths path
+        else
+            return [path]
+    return (concat paths)
 
 
+designateDestination :: FilePath -> (FilePath, FilePath)
+designateDestination filePath =
+    let
+        destination :: FilePath
+        destination = replaceExtension filePath "html"
+    in
+        (filePath, destination)
 
-replaceExtension' :: FilePath -> (FilePath, FilePath)
-replaceExtension' filePath = (filePath, replaceExtension filePath "html")
 
-
-defaultConverter :: FilePath -> FilePath -> IO ()
-defaultConverter input output = do
+defaultConverter :: (FilePath, FilePath) -> IO ()
+defaultConverter (input, output) = do
     s <- readFile input
     case defaultReader s of
         Left pandocError -> print pandocError
