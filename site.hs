@@ -2,25 +2,34 @@ import Control.Monad (when)
 import Data.Foldable (traverse_, forM_)
 import qualified Data.Set as S
 import Data.Traversable (forM)
-import System.Directory (listDirectory, doesDirectoryExist)
-import System.FilePath.Posix ((</>), replaceExtension, takeExtension)
+import System.Directory (createDirectoryIfMissing, doesDirectoryExist, listDirectory)
+import System.FilePath.Posix (
+    (</>), joinPath, replaceExtension, splitPath,
+    takeExtension, takeFileName, takeDirectory)
 import Text.Pandoc.Definition (Pandoc)
 import Text.Pandoc.Error (PandocError)
 import Text.Pandoc.Readers.Markdown (readMarkdown)
 import Text.Pandoc.Writers.HTML (writeHtmlString)
-import Text.Pandoc.Options (
-    def,
-    Extension(..),
-    ReaderOptions(..),
-    WriterOptions(..))
+import Text.Pandoc.Options (def, Extension(..), ReaderOptions(..), WriterOptions(..))
 
 
 main :: IO ()
 main = do
-    filePaths <- getFilePaths "markdown"
+    let markdownDirectory = "markdown"
+    let htmlDirectory = "html"
+    filePaths <- getFilePaths markdownDirectory
     forM_ filePaths $ \filePath ->
-       when (takeExtension filePath == ".markdown") $
-            (defaultConverter . designateDestination) filePath
+       when (takeExtension filePath == ".markdown") $ do
+            let
+                destFileName :: FilePath
+                destFileName = ((`replaceExtension` "html") . takeFileName) filePath
+                destDirectory :: FilePath
+                destDirectory = (htmlDirectory </>) $
+                    (joinPath . tail . splitPath . takeDirectory) filePath
+                isRecursive :: Bool
+                isRecursive = True
+            createDirectoryIfMissing isRecursive destDirectory
+            defaultConverter filePath (destDirectory </> destFileName)
 
 
 getFilePaths :: FilePath -> IO [FilePath]
@@ -36,17 +45,8 @@ getFilePaths directory = do
     return (concat paths)
 
 
-designateDestination :: FilePath -> (FilePath, FilePath)
-designateDestination filePath =
-    let
-        destination :: FilePath
-        destination = replaceExtension filePath "html"
-    in
-        (filePath, destination)
-
-
-defaultConverter :: (FilePath, FilePath) -> IO ()
-defaultConverter (input, output) = do
+defaultConverter :: FilePath -> FilePath -> IO ()
+defaultConverter input output = do
     s <- readFile input
     case defaultReader s of
         Left pandocError -> print pandocError
@@ -57,7 +57,8 @@ defaultReader :: String -> Either PandocError Pandoc
 defaultReader s =
     let
         readerOptions :: ReaderOptions
-        readerOptions = def { readerExtensions = S.fromList [Ext_east_asian_line_breaks] }
+        readerOptions = def { readerExtensions = S.fromList [Ext_east_asian_line_breaks,
+                                                             Ext_backtick_code_blocks] }
     in
         readMarkdown readerOptions s
 
