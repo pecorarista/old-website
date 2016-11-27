@@ -21,6 +21,21 @@ const materialize = {
   css: 'bower_components/materialize/dist/css/materialize.css',
   js: 'bower_components/materialize/dist/js/materialize.js'
 };
+const roboto = {
+  css: 'bower_components/roboto-fontface/css/**/*.css',
+  font: 'bower_components/roboto-fontface/fonts/**/*.{eot,svg,woff}'
+};
+const jquery = 'bower_components/jquery/dist/jquery.min.js';
+const img = 'img/**/*';
+
+gulp.task('img', () =>
+  gulp.src(img).pipe(gulp.dest('dist/public/img/'))
+);
+
+gulp.task('font', () => {
+  gulp.src(roboto.font).pipe(gulp.dest('dist/public/fonts/'));
+  gulp.src(roboto.css).pipe(gulp.dest('dist/public/css/'));
+});
 
 gulp.task('pug', () => {
   gulp.src(pugFiles)
@@ -49,9 +64,10 @@ gulp.task('vendor', () => {
   gulp.src(mathjax).pipe(gulp.dest('dist/public/js'));
   gulp.src(materialize.css).pipe(gulp.dest('dist/public/css'));
   gulp.src(materialize.js).pipe(gulp.dest('dist/public/js'));
+  gulp.src(jquery).pipe(gulp.dest('dist/public/js'));
 });
 
-gulp.task('default', ['pug', 'sass', 'vendor']);
+gulp.task('default', ['img', 'font', 'pug', 'sass', 'vendor']);
 
 gulp.task('server', ['default'],() => {
   gulp.watch(pugFiles, ['pug']);

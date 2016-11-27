@@ -7,7 +7,7 @@ body {
 
 article {
   p {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -15,6 +15,11 @@ p {
   .text-muted {
     color: $text-muted;
   }
+}
+
+.centered-image {
+  height: auto;
+  max-width: 100%;
 }
 
 pre {

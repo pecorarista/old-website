@@ -45,41 +45,98 @@ cp path/to/cabocha/java/CaboCha.jar lib/
 cp path/to/cabocha/java/libCaboCha.so lib/
 ```
 
-次に、例えば以下のように `<project_root>/src/main/scala/Main.scala` を編集します。
+次に `Parser` の内容を `<project_root>/src/main/scala/cabochawrapper/Parser.scala` に定義します。
 
 ```scala
+package cabochawrapper
+
 import org.chasen.cabocha.{
-  Parser,
+  Parser => CaboChaParser,
+  Chunk => CaboChaChunk,
+  Tree => CaboChaTree,
+  Token => CaboChaToken,
   FormatType
 }
 
-object Main extends App {
+case class Token(
+  surface: String,
+  normalizedSurface: String,
+  feature: String,
+  namedEntity: Option[String],
+  additionalInfo: Option[String]
+)
+
+case class Chunk(
+  score: Float,
+  link: Int,
+  additionalInfo: Option[String],
+  features: Seq[String],
+  tokens: Seq[Token]
+)
+
+class Parser {
 
   try {
     System.loadLibrary("CaboCha")
   } catch {
-    case e: UnsatisfiedLinkError => {
+    case _: UnsatisfiedLinkError => {
       println("Make sure that `CaboCha.jar` and `libCaboCha.so` are in `lib`.")
       System.exit(1)
     }
   }
 
-  val parser = new Parser()
-  val s = "太郎は二郎にこの本を渡した．"
-  val tree = parser.parse(s)
-  print(tree.toString(FormatType.FORMAT_TREE))
+  val parser = new CaboChaParser()
+
+  def parseToChunks(s: String): Seq[Chunk] = {
+    val tree: CaboChaTree = this.parser.parse(s)
+    (0.toLong until tree.chunk_size()).map { i =>
+      val chunk = tree.chunk(i)
+      val features = (0.toLong until chunk.getFeature_list_size()).map { i =>
+        chunk.feature_list(i)
+      }
+      val n = chunk.getToken_pos()
+      val N = n + chunk.getToken_size()
+      val tokens = (n until N).map { i =>
+        tree.token(i).toToken()
+      }
+      Chunk(score = chunk.getScore(),
+            link = chunk.getLink(),
+            tokens = tokens,
+            additionalInfo = Option(chunk.getAdditional_info()).filter(_ != null),
+            features = features)
+    }
+  }
+
+  implicit class ExtendedCaboChaToken(token: CaboChaToken) {
+    def toToken(): Token =
+      Token(surface = token.getSurface(),
+            normalizedSurface = token.getNormalized_surface(),
+            feature = token.getFeature(),
+            namedEntity = Option(token.getNe()).filter(_ != null),
+            additionalInfo = Option(token.getAdditional_info()).filter(_ != null)
+      )
+  }
 
 }
 ```
 
-これを `sbt run` で実行します。
-次のような出力が得られたならば成功です。
+最後に `<project_root>/src/main/scala/Main.scala` を編集して、
+先ほど定義した `Parser` を呼び出すようにします。
 
+```scala
+package cabochawrapper
+
+object Main extends App {
+
+  val parser = new Parser()
+  val s = "太郎は二郎にこの本を渡した．"
+
+  parser.parseToChunks(s).zipWithIndex.foreach { case (c, i) =>
+    c.tokens.zipWithIndex.foreach { case (t, j) =>
+      println(t.normalizedSurface)
+    }
+  }
+}
 ```
-  太郎は-------D
-    二郎に-----D
-        この-D |
-          本を-D
-        渡した．
-EOS
-```
+
+これを `sbt run` などで実行してください。

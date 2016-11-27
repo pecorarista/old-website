@@ -56,9 +56,12 @@ defaultConverter input output = do
 defaultReader :: String -> Either PandocError Pandoc
 defaultReader s =
     let
+        extensions :: S.Set Extension
+        extensions = S.fromList [Ext_east_asian_line_breaks,
+                                 Ext_raw_html,
+                                 Ext_backtick_code_blocks]
         readerOptions :: ReaderOptions
-        readerOptions = def { readerExtensions = S.fromList [Ext_east_asian_line_breaks,
-                                                             Ext_backtick_code_blocks] }
+        readerOptions = def { readerExtensions = extensions }
     in
         readMarkdown readerOptions s
 
