@@ -4,19 +4,4 @@ block vars
   - var title = 'Markdown → LaTeX で単語帳'
 
 block content
-  p
-  | まずは Markdown 形式で単語を書いていきます。
-  a(href='#', target='_blank') Vim
-  | などのテキストエディタ
-  pre
-    code.markdown __hitherto__ // *adv.* 今までは
-  p
-  | これを例えば
-  pre test.md
-  | のような名前で保存します。発音記号の入力方法は
-  a(href='ao') こちら
-  | などを参考にしてください。
-
-  pre
-    code.latex
-      include ../../../code_snippet/vocabulary-template.tex
+  include ../../../html/posts/ja/type-arabic.html
