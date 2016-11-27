@@ -57,7 +57,8 @@ defaultReader :: String -> Either PandocError Pandoc
 defaultReader s =
     let
         extensions :: S.Set Extension
-        extensions = S.fromList [Ext_backtick_code_blocks,
+        extensions = S.fromList [Ext_autolink_bare_uris,
+                                 Ext_backtick_code_blocks,
                                  Ext_east_asian_line_breaks,
                                  Ext_raw_html]
         readerOptions :: ReaderOptions

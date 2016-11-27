@@ -1,9 +1,9 @@
-__前提__
+## このページでの前提
 
-+ CaboCha のインストールが済んでいること。
-+ 使う OS は Linux（特に RHEL 7 または Ubuntu 14）を想定しています。
+1. CaboCha のインストールが済んでいること。
+2. OS が Linux（特に RHEL 7 または Ubuntu 14）であること。
 
-### 1. CaboCha のソースコードの取得
+## 準備
 
 インストールのときに使ったソースコードが残っていればそれを使ってください。
 捨ててしまった場合は https://github.com/taku910/cabocha からクローンしてください。
@@ -12,11 +12,9 @@ __前提__
 git clone https://github.com/taku910/cabocha.git
 ```
 
-### 2. 設定
-
-Makefile の `INCLUDE` を使っている Java に合わせて変更します。
+次に `cabocha/java/Makefile` の `INCLUDE` を、使っている Java に合わせて変更します。
 どの Java を使っているのか分からない場合は、
-`which java` や `update-java-alternatives` (`update-alternatives`) で調べてください。
+`which java` や `update-alternatives` などで調べてください。
 
 ```Makefile
 # …
@@ -25,12 +23,9 @@ INCLUDE=/usr/lib/jvm/java-8-oracle/include
 # …
 ```
 
-### 3. コンパイル
+設定を書き換えたら `cabocha/java` ディレクトリで `make` と打ち込んでコンパイルします。
 
-`cabocha/java` ディレクトリで `make` と打ち込んでコンパイルします。
-
-
-### 4. Scala からの利用例
+## 利用例
 
 実際にプロジェクトを作成して使ってみることにします。
 まず、先ほど生成された `CaboCha.jar` と `libCaboCha.so lib` を

@@ -16,14 +16,14 @@ const highlighter = {
   css: 'bower_components/highlightjs/styles/solarized-light.css',
   js: 'bower_components/highlightjs/highlight.pack.js'
 };
-const mathjax = 'bower_components/MathJax/MathJax.js';
+const mathjax = 'bower_components/MathJax/**/*.js';
 const materialize = {
   css: 'bower_components/materialize/dist/css/materialize.css',
   js: 'bower_components/materialize/dist/js/materialize.js'
 };
 const roboto = {
   css: 'bower_components/roboto-fontface/css/**/*.css',
-  font: 'bower_components/roboto-fontface/fonts/**/*.{eot,svg,woff}'
+  font: 'bower_components/roboto-fontface/fonts/**/*.{eot,svg,woff,ttf,woff2}'
 };
 const jquery = 'bower_components/jquery/dist/jquery.min.js';
 const img = 'img/**/*';

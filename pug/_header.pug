@@ -1,2 +1,7 @@
-h1= title
-p.info.text-muted Posted: #{created}
+.post-header
+  .right-align
+    a.twitter-share-button(href='https://twitter.com/share', data-show-count='false') Tweet
+    script(async, src='//platform.twitter.com/widgets.js' charset='utf-8')
+  .left-align
+    h1= title
+    p.info.text-muted Posted: #{created}
