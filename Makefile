@@ -9,6 +9,8 @@ install:
 	stack init
 
 server:
+	stack build
+	stack exec site
 	"$(shell npm bin)/gulp" server
 
 clean:
