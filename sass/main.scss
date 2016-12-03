@@ -1,9 +1,11 @@
 $pink: #ee6e73;
+$black: #333;
+$white: #fff;
 $orange: #dc322f;
-$crimson: #c7254e;
+$darkblue: #546e7a;
+$crimson: #c82b40;
 $gray: #f9f2f4;
 $default-font-size: 16px;
-$black: #333;
 $text-muted: #777;
 
 body {
@@ -51,7 +53,12 @@ article {
   max-width: 100%;
 }
 
+nav {
+  background-color: $crimson;
+}
+
 .nav-wrapper {
+
   li {
     a {
       font-weight: bold;
@@ -88,7 +95,8 @@ p {
   }
 }
 
-footer.page-footer {
+/*
+ * footer.page-footer {
   padding-bottom: 20px;
   padding-top: 0;
   width: 100%;
@@ -100,4 +108,24 @@ footer.page-footer {
       font-weight: bold;
     }
   }
+}
+*/
+
+footer.page-footer {
+  color: $white;
+  padding-bottom: 8px;
+  padding-top: 8px;
+  width: 100%;
+
+  .container {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  a {
+    color: $orange;
+  }
+
 }
