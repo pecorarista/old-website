@@ -1,9 +1,10 @@
-$pink: #ee6e73;
+$brand-logo-size: 24px;
 $black: #333;
 $white: #fff;
 $orange: #dc322f;
 $darkblue: #546e7a;
 $crimson: #c82b40;
+$brown: #633535;
 $gray: #f9f2f4;
 $default-font-size: 16px;
 $text-muted: #777;
@@ -17,6 +18,31 @@ body {
 
 main {
   flex: 1 0 auto;
+}
+
+nav {
+  background-color: $crimson;
+
+  .nav-wrapper {
+    margin: 0 auto;
+    width: 90%;
+
+    .brand-logo {
+      font-size: $brand-logo-size;
+    }
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  nav .nav-wrapper {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  nav .nav-wrapper {
+    width: 70%;
+  }
 }
 
 article {
@@ -51,19 +77,6 @@ article {
 .centered-image {
   height: auto;
   max-width: 100%;
-}
-
-nav {
-  background-color: $crimson;
-}
-
-.nav-wrapper {
-
-  li {
-    a {
-      font-weight: bold;
-    }
-  }
 }
 
 pre {
@@ -112,6 +125,7 @@ p {
 */
 
 footer.page-footer {
+  background-color: $brown;
   color: $white;
   padding-bottom: 8px;
   padding-top: 8px;

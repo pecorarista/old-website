@@ -74,6 +74,7 @@ gulp.task('server', ['default'],() => {
   gulp.watch(sassFiles, ['sass']);
   gulp.src(dist)
     .pipe(webserver({
-      livereload: true
-    }))
+      livereload: true,
+      port: 8000
+    }));
 });
