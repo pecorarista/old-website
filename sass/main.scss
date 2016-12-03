@@ -1,10 +1,11 @@
 $brand-logo-size: 24px;
 $black: #333;
+$green: #3fafa4;
+$brown: #633535;
+$orange: #ffab40;
 $white: #fff;
-$orange: #dc322f;
 $darkblue: #546e7a;
 $crimson: #c82b40;
-$brown: #633535;
 $gray: #f9f2f4;
 $default-font-size: 16px;
 $text-muted: #777;
@@ -34,15 +35,43 @@ nav {
 }
 
 @media only screen and (min-width: 601px) {
-  nav .nav-wrapper {
-    width: 85%;
+  nav {
+    .nav-wrapper {
+      width: 85%;
+    }
   }
 }
 
 @media only screen and (min-width: 993px) {
-  nav .nav-wrapper {
-    width: 70%;
+  nav {
+    .nav-wrapper {
+      width: 70%;
+    }
   }
+}
+
+footer {
+  background-color: $brown;
+  color: $white;
+  padding-bottom: 8px;
+  padding-top: 9px;
+  width: 100%;
+
+  .container {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  a {
+    color: $orange;
+  }
+
+}
+
+.btn {
+  background-color: $green;
 }
 
 article {
@@ -106,40 +135,4 @@ p {
     color: $orange;
     padding: 2px 4px;
   }
-}
-
-/*
- * footer.page-footer {
-  padding-bottom: 20px;
-  padding-top: 0;
-  width: 100%;
-
-  .footer-copyright {
-    background-color: $pink;
-
-    a {
-      font-weight: bold;
-    }
-  }
-}
-*/
-
-footer.page-footer {
-  background-color: $brown;
-  color: $white;
-  padding-bottom: 8px;
-  padding-top: 8px;
-  width: 100%;
-
-  .container {
-    margin-bottom: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-top: 0;
-  }
-
-  a {
-    color: $orange;
-  }
-
 }
