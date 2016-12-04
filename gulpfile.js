@@ -9,10 +9,12 @@ const sasslint = require('gulp-sass-lint');
 const postcss = require('gulp-postcss');
 const cssnext = require('postcss-cssnext');
 const processors = [ cssnext() ];
+const path = require('path');
 const dist = 'dist';
+const shell = require('gulp-shell');
 const posts = require('./posts.json');
-const pugFiles = ['pug/**/*.pug', '!pug/**/_*.pug', '!pug/index.pug'];
-const index = 'pug/index.pug';
+const pugFiles = ['pug/**/*.pug', '!pug/**/_*.pug', '!pug/**/index.pug'];
+const index = 'pug/**/index.pug';
 const sassFiles = ['sass/**/*.s+(a|c)ss'];
 const img = 'img/**/*';
 
@@ -57,10 +59,16 @@ gulp.task('index', () => {
   );
 });
 
+gulp.task('pandoc', () => {
+  posts.forEach(post => {
+    shell.task([`stack exec pandoc -f ${post}`, ``]);
+  });
+});
+
 gulp.task('default', ['img', 'index', 'pug', 'sass']);
 
 gulp.task('server', ['default'],() => {
-  gulp.watch(['pug/**/*.pug', '!pug/index.pug'], ['pug']);
+  gulp.watch(['pug/**/*.pug', '!pug/**/index.pug'], ['pug']);
   gulp.watch([index, 'pug/**/_*.pug'], ['index']);
   gulp.watch(sassFiles, ['sass']);
   gulp.src(dist)

@@ -1,0 +1,13 @@
+extends ../_layout
+
+block content
+  h2 Posts
+  ul
+    for post in posts
+      li
+        a= post.titles.ja
+        | &nbsp;–&nbsp;
+        span.strong= post.created
+        | &nbsp;(modified:&nbsp;
+        span= post.modified
+        | )

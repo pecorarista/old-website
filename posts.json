@@ -1,14 +1,22 @@
 [
   {
     "id": "arabluatex",
+    "titles": {
+      "ja": "アラビア文字を含むファイルの編集方法",
+      "en": "Edit files with Arabic letters"
+    },
     "langs": ["en", "ja"],
-    "created": "20",
-    "modified": "",
+    "created": "2016-05-23",
+    "modified": "2016-07-12",
     "mathematical": false,
     "programming": true
   },
   {
     "id": "cabocha-scala",
+    "titles": {
+      "ja": "Scala から CaboCha を使う",
+      "en": "Use CaboCha in Scala"
+    },
     "langs": ["en", "ja"],
     "created": "2016-11-22",
     "modified": "2016-11-24",
