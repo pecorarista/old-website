@@ -5,6 +5,10 @@ nav
       i.material-icons menu
     ul.right
       li
+        a.dropdown-button(href='/', data-activates='languages') LANGS
+          i.material-icons.right arrow_drop_down
+    ul.right.hide-on-med-and-down
+      li
         a(href='/') HOME
       li
         a(href='profile.html') PROFILE
@@ -13,3 +17,8 @@ nav
         a(href='/') HOME
       li
         a(href='profile.html') PROFILE
+    ul#languages.dropdown-content
+      li
+        a English
+      li
+        a Japanese

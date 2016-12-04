@@ -5,10 +5,8 @@ html(lang=lang)
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width,initial-scale=1.0")
     title= title
-    link(rel='stylesheet', href='/public/css/solarized-light.css')
-    link(rel='stylesheet', href='/public/css/materialize.css')
-    link(rel='stylesheet', href='/public/css/roboto/roboto-fontface.css')
-    link(rel='stylesheet', href='/public/css/main.css')
+    block stylesheets
+      include _stylesheets.pug
   body
     header
       include _navbar.pug
@@ -17,9 +15,5 @@ html(lang=lang)
         block content
     footer
       include _footer.pug
-    script(src='/public/js/jquery.min.js')
-    script(src='/public/js/MathJax.js')
-    script(src='/public/js/highlight.pack.js')
-    script(src='/public/js/materialize.js')
-    script.
-      hljs.initHighlightingOnLoad();
+    block scripts
+      include _scripts.pug
