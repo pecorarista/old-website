@@ -15,7 +15,15 @@ const index = 'pug/**/index.pug';
 const sassFiles = ['sass/**/*.s+(a|c)ss'];
 const img = 'img/**/*';
 const highlighter = {
-  js: 'bower_components/highlightjs/highlight.pack.min.js'
+  css: './bower_components/prism/themes/prism.css',
+  js: [
+    './bower_components/prism/prism.js',
+    './bower_components/prism/components/prism-bash.min.js',
+    './bower_components/prism/components/prism-makefile.min.js',
+    './bower_components/prism/components/prism-latex.min.js',
+    './bower_components/prism/components/prism-java.min.js',
+    './bower_components/prism/components/prism-scala.min.js'
+  ]
 };
 
 gulp.task('img', () =>
@@ -65,6 +73,8 @@ gulp.task('index', () => {
 });
 
 gulp.task('highlighter', () => {
+  console.log('E');
+  gulp.src(highlighter.css).pipe(gulp.dest('dist/public/css'));
   gulp.src(highlighter.js).pipe(gulp.dest('dist/public/js'));
 });
 

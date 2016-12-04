@@ -60,7 +60,9 @@ defaultReader s =
         extensions = S.fromList [Ext_autolink_bare_uris,
                                  Ext_backtick_code_blocks,
                                  Ext_east_asian_line_breaks,
-                                 Ext_link_attributes]
+                                 Ext_link_attributes,
+                                 Ext_raw_html,
+                                 Ext_superscript]
         readerOptions :: ReaderOptions
         readerOptions = def { readerExtensions = extensions }
     in

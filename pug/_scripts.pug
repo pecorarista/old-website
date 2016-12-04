@@ -7,12 +7,14 @@ if mathematical
          src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML')
 script(type='text/javascript',
        src='//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js')
-script(type='text/javascript', src='/public/js/highlight.pack.min.js')
+script(type='text/javascript', src='/public/js/prism.js')
+script(type='text/javascript', src='/public/js/prism-bash.min.js')
+script(type='text/javascript', src='/public/js/prism-makefile.min.js')
+script(type='text/javascript', src='/public/js/prism-latex.min.js')
+script(type='text/javascript', src='/public/js/prism-java.min.js')
+script(type='text/javascript', src='/public/js/prism-scala.min.js')
 script(type='text/javascript').
   $(document).ready(function() {
     $('.dropdown-button').dropdown();
     $('.button-collapse').sideNav();
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-    });
   });

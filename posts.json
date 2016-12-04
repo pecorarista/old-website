@@ -6,10 +6,9 @@
       "en": "Edit files with Arabic letters"
     },
     "langs": ["en", "ja"],
-    "created": "2016-05-23",
+    "posted": "2016-05-23",
     "modified": "2016-07-12",
-    "mathematical": false,
-    "programming": true
+    "mathematical": false
   },
   {
     "id": "cabocha-scala",
@@ -18,9 +17,27 @@
       "en": "Use CaboCha in Scala"
     },
     "langs": ["en", "ja"],
-    "created": "2016-11-22",
+    "posted": "2016-11-22",
     "modified": "2016-11-24",
-    "mathematical": false,
-    "programming": true
+    "mathematical": false
+  },
+  {
+    "id": "pseudocode",
+    "titles": {
+      "ja": "LaTeX で擬似コード",
+      "en": "Pseudocode in LaTeX"
+    },
+    "posted": "2015-08-24",
+    "modified": "2015-09-21"
+  },
+  {
+    "id": "inner-universe",
+    "titles": {
+      "ja": "攻殻機動隊 S.A.C. の OP をロシア語で歌いたい",
+      "en": "?"
+    },
+    "posted": "2015-04-14",
+    "modified": "2016-03-22",
+    "mathematical": false
   }
 ]

@@ -94,8 +94,13 @@ article {
     margin-top: 30px;
   }
 
-  li {
-    font-size: $default-font-size;
+  ul {
+    padding-left: 40px !important;
+
+    li {
+      font-size: $default-font-size;
+      list-style-type: disc !important;
+    }
   }
 }
 
@@ -120,4 +125,14 @@ h2 {
 h3 {
   font-size: 18px;
   font-weight: bold;
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  // background-color: $background;
+  // border-radius: 4px;
+  // color: $main-color;
+  font-family: 'Liberation Mono', monospace;
+  font-size: $default-font-size;
+  // padding: 2px 4px;
 }

@@ -8,7 +8,7 @@
 インストールのときに使ったソースコードが残っていればそれを使ってください。
 捨ててしまった場合は https://github.com/taku910/cabocha からクローンしてください。
 
-```bash
+```language-bash
 git clone https://github.com/taku910/cabocha.git
 ```
 
@@ -16,7 +16,7 @@ git clone https://github.com/taku910/cabocha.git
 どの Java を使っているのか分からない場合は、
 `which java` や `update-alternatives` などで調べてください。
 
-```Makefile
+```language-makefile
 # …
 # Example
 INCLUDE=/usr/lib/jvm/java-8-oracle/include
@@ -31,7 +31,7 @@ INCLUDE=/usr/lib/jvm/java-8-oracle/include
 まず、先ほど生成された `CaboCha.jar` と `libCaboCha.so lib` を
 プロジェクトの `lib` ディレクトリにコピーします。
 
-```bash
+```language-bash
 mkdir <project_root>
 cd <project_root>
 echo 'scalaVersion := "2.12.0"' > build.sbt
@@ -42,7 +42,7 @@ cp path/to/cabocha/java/libCaboCha.so lib/
 
 次に `Parser` の内容を `<project_root>/src/main/scala/cabochawrapper/Parser.scala` に定義します。
 
-```scala
+```language-scala
 package cabochawrapper
 
 import org.chasen.cabocha.{
@@ -118,7 +118,7 @@ class Parser {
 最後に `<project_root>/src/main/scala/Main.scala` を編集して、
 先ほど定義した `Parser` を呼び出すようにします。
 
-```scala
+```language-scala
 package cabochawrapper
 
 object Main extends App {

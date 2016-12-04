@@ -20,6 +20,7 @@
     "MathJax": "^2.7.0",
     "materialize": "^0.97.8",
     "jquery": "^3.1.1",
-    "roboto-fontface": "^0.6.0"
+    "roboto-fontface": "^0.6.0",
+    "prism": "https://github.com/PrismJS/prism.git#master"
   }
 }

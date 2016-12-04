@@ -24,7 +24,7 @@ for post in posts:
                  '    include ../../_header.pug\n'
                  '    include ../../../html/{}/posts/{}.html\n')
             f.write(s.format(post['titles'][lang],
-                             post['created'],
+                             post['posted'],
                              post['modified'],
                              lang,
                              post['id']))

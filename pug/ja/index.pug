@@ -7,7 +7,6 @@ block content
       li
         a(href=`/ja/posts/${post.id}.html`)= post.titles.ja
         | &nbsp;–&nbsp;
-        span.strong= post.created
-        | &nbsp;(modified:&nbsp;
-        span= post.modified
-        | )
+        span.strong= post.posted
+        | &nbsp;
+        span.text-muted (modified:&nbsp; #{post.modified})
