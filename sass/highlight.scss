@@ -1,0 +1,95 @@
+$background: #effaf4;
+$main-color: #333;
+$crimson: #c82b40;
+$string-color: #305e9b;
+$comment: #586e75;
+$brown: #633535;
+$orange: #d87040;
+$darkblue: #546e7a;
+$vividblue: #234fff;
+$yellow: #ffda23;
+$white: #fff;
+
+.hljs {
+  background: $background;
+  color: $main-color;
+  display: block;
+  overflow-x: auto;
+  padding: .5em;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: $comment;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-addition {
+  color: $crimson;
+}
+
+.hljs-number,
+.hljs-string,
+.hljs-meta .hljs-meta-string,
+.hljs-literal,
+.hljs-doctag,
+.hljs-regexp {
+  color: $orange;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+  color: $main-color;
+}
+
+.hljs-attribute,
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-class .hljs-title,
+.hljs-type {
+  color: $vividblue;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-subst,
+.hljs-meta,
+.hljs-meta .hljs-keyword,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-link {
+  color: $white;
+}
+
+.hljs-built_in,
+.hljs-deletion {
+  color: $crimson;
+}
+
+.hljs-formula {
+  background: $white;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+
+p {
+  code {
+    background-color: $background;
+    border-radius: 4px;
+    color: $main-color;
+    font-family: 'Liberation Mono', monospace;
+    padding: 2px 4px;
+  }
+}

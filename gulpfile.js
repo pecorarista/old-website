@@ -9,25 +9,31 @@ const sasslint = require('gulp-sass-lint');
 const postcss = require('gulp-postcss');
 const cssnext = require('postcss-cssnext');
 const processors = [ cssnext() ];
-const path = require('path');
 const dist = 'dist';
-const shell = require('gulp-shell');
 const posts = require('./posts.json');
-const pugFiles = ['pug/**/*.pug', '!pug/**/_*.pug', '!pug/**/index.pug'];
 const index = 'pug/**/index.pug';
 const sassFiles = ['sass/**/*.s+(a|c)ss'];
 const img = 'img/**/*';
+const pugFiles = ['pug/**/*.pug', '!pug/**/_*.pug', '!pug/**/index.pug'];
+const highlighter = {
+  js: 'bower_components/highlightjs/highlight.pack.min.js'
+};
 
 gulp.task('img', () =>
   gulp.src(img).pipe(gulp.dest('dist/public/img/'))
 );
 
-gulp.task('pug', () => {
+gulp.task('post', () => {
   gulp.src(pugFiles)
     .pipe(puglint())
     .pipe(puglint.reporter('fail'))
     .pipe(pug({
-      pretty: true
+      pretty: true,
+      data: {
+        title: 'にゃーん',
+        created: '2016-01-01',
+        modified: '2016-01-01'
+      }
     }))
     .pipe(gulp.dest('dist'));
 });
@@ -59,16 +65,14 @@ gulp.task('index', () => {
   );
 });
 
-gulp.task('pandoc', () => {
-  posts.forEach(post => {
-    shell.task([`stack exec pandoc -f ${post}`, ``]);
-  });
+gulp.task('highlighter', () => {
+  gulp.src(highlighter.js).pipe(gulp.dest('dist/public/js'));
 });
 
-gulp.task('default', ['img', 'index', 'pug', 'sass']);
+gulp.task('default', ['img', 'highlighter', 'index', 'post', 'sass']);
 
 gulp.task('server', ['default'],() => {
-  gulp.watch(['pug/**/*.pug', '!pug/**/index.pug'], ['pug']);
+  gulp.watch(['pug/**/*.pug', '!pug/**/index.pug'], ['post']);
   gulp.watch([index, 'pug/**/_*.pug'], ['index']);
   gulp.watch(sassFiles, ['sass']);
   gulp.src(dist)

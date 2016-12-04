@@ -3,3 +3,5 @@ bower_components/
 node_modules/
 dist/
 *.html
+pug/ja/posts/*
+pug/en/posts/*

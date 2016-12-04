@@ -1,0 +1,1 @@
+extends ../../_layoutblock content  article    include ../../_header.pug    include ../../html/ja/posts/cabocha-scala.html

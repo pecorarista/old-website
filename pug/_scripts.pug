@@ -5,15 +5,14 @@ script(type='text/javascript',
 if mathematical
   script(type='text/javascript', async,
          src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML')
-if programming
-  script(type='text/javascript',
-         src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js')
-  script.
-    hljs.initHighlightingOnLoad();
 script(type='text/javascript',
        src='//cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js')
+script(type='text/javascript', src='/public/js/highlight.pack.min.js')
 script(type='text/javascript').
   $(document).ready(function() {
     $('.dropdown-button').dropdown();
     $('.button-collapse').sideNav();
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
   });

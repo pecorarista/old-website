@@ -11,6 +11,7 @@ install:
 server:
 	stack build
 	stack exec site
+	python populate-pugs.py
 	"$(shell npm bin)/gulp" server
 
 clean:
