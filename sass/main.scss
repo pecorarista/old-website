@@ -127,12 +127,34 @@ h3 {
   font-weight: bold;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-  // background-color: $background;
-  // border-radius: 4px;
-  // color: $main-color;
+code[class*='language-'],
+pre[class*='language-'] {
   font-family: 'Liberation Mono', monospace;
   font-size: $default-font-size;
-  // padding: 2px 4px;
+}
+
+// http://stackoverflow.com/questions/11122249/scale-iframe-css-width-100-like-an-image
+.pdf-wrapper {
+  height: 100%;
+  margin: 0 auto;
+  width: 80%;
+}
+
+@media (max-width: 640px) {
+  .pdf-wrapper {
+    width: 100%;
+  }
+}
+
+.pdf-iframe {
+  padding-top: 70%;
+  position: relative;
+
+  iframe {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }

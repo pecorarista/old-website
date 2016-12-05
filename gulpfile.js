@@ -26,6 +26,13 @@ const highlighter = {
   ]
 };
 
+gulp.task('pdfjs', () => {
+  gulp.src('./bower_components/pdfjs-dist/build/*')
+    .pipe(gulp.dest('dist/pdf.js/build'));
+  gulp.src('./bower_components/pdfjs-dist/web/**/*')
+    .pipe(gulp.dest('dist/pdf.js/web'));
+});
+
 gulp.task('img', () =>
   gulp.src(img).pipe(gulp.dest('dist/public/img/'))
 );
@@ -78,7 +85,7 @@ gulp.task('highlighter', () => {
   gulp.src(highlighter.js).pipe(gulp.dest('dist/public/js'));
 });
 
-gulp.task('default', ['img', 'highlighter', 'index', 'post', 'sass']);
+gulp.task('default', ['pdfjs', 'img', 'highlighter', 'index', 'post', 'sass']);
 
 gulp.task('server', ['default'],() => {
   gulp.watch(['pug/**/*.pug', '!pug/**/index.pug'], ['post']);

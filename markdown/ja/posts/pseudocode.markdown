@@ -1,5 +1,3 @@
-<span class="text-muted">この記事中の PDF ファイルが表示されない場合は<a href="//github.com/pecorarista/website/tree/master/assets/pdf" target="_blank">こちら</a>から見ることができます．</span>
-
 アルゴリズムやプログラミングに関する文書を書いているとき、擬似コードを書くことがあると思います。この記事では
 LaTeX で擬似コードを書く方法と見た目を変更する方法をいくつか説明したいと思います。環境としては
 LuaTeX を想定していますが、それ以外の場合でも若干の変更で動くと思います。
@@ -34,14 +32,14 @@ LuaTeX を想定していますが、それ以外の場合でも若干の変更�
 
 <div class="pdf-wrapper" style="margin-bottom: 20px;">
 <div class="pdf-iframe">
-<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/pseudocode1.pdf#zoom=page-fit"></iframe>
+<iframe src="/pdf.js/web/viewer.html?file=/public/pdf/pseudocode1.pdf#zoom=page-fit"></iframe>
 </div>
 </div>
 
 普段Python など `end` を明示しない言語に慣れていると少し冗長に感じるかもしれません。
 そのような記号を明示したくない場合はパッケージ読込時に
 
-```tex
+```language-latex
 \usepackage[noend]{algpseudocode}
 ```
 
@@ -49,20 +47,20 @@ LuaTeX を想定していますが、それ以外の場合でも若干の変更�
 
 <div class="pdf-wrapper" style="margin-bottom: 20px;">
 <div class="pdf-iframe">
-<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/pseudocode2.pdf#zoom=page-fit"></iframe>
+<iframe src="/pdf.js/web/viewer.html?file=/public/pdf/pseudocode2.pdf#zoom=page-fit"></iframe>
 </div>
 </div>
 
 のような Python 風の擬似コードになります。さらに`do` の記述も不要ならば、ヘッダ部分に以下のように記述します。
 
 
-```tex
+```language-latex
 \algrenewcommand\algorithmicdo{}
 ```
 
 いま `for` の始点と終点の間には `...` を使っていますが、もし変えたければ `algpseudocode.sty` にならい新しい制御構造 `\ForTo` を定義します。
 
-```tex
+```language-latex
 \algnewcommand\algorithmicto{\textbf{to}}
 \algdef{SE}[FOR]{ForTo}{EndFor}[2]{\algorithmicfor\ #1\ \algorithmicto\ #2\ \algorithmicdo}{\algorithmicend\ \algorithmicfor}%
 ```
@@ -71,7 +69,7 @@ LuaTeX を想定していますが、それ以外の場合でも若干の変更�
 
 <div class="pdf-wrapper" style="margin-bottom: 20px;">
 <div class="pdf-iframe">
-<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/pseudocode3.pdf#zoom=page-fit"></iframe>
+<iframe src="/pdf.js/web/viewer.html?file=/public/pdf/pseudocode3.pdf#zoom=page-fit"></iframe>
 </div>
 </div>
 
@@ -82,7 +80,7 @@ LuaTeX を想定していますが、それ以外の場合でも若干の変更�
 
 行間は `\setlength{\baselineskip}{Npt}` で変更できます。
 
-```tex
+```language-latex
 {\setlength{\baselineskip}{20pt}
 \begin{algorithmic}[1]
     \Procedure{Insertion-Sort}{$A$}
@@ -102,14 +100,14 @@ LuaTeX を想定していますが、それ以外の場合でも若干の変更�
 
 <div class="pdf-wrapper" style="margin-bottom: 20px;">
 <div class="pdf-iframe">
-<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/pseudocode4.pdf#zoom=page-fit"></iframe>
+<iframe src="/pdf.js/web/viewer.html?file=/public/pdf/pseudocode4.pdf#zoom=page-fit"></iframe>
 </div>
 </div>
 
 
 フォントはヘッダ部で以下のように書くと変更できます。
 
-```latex
+```language-latex
 \usepackage{luatexja-fontspec}
 \newfontfamily\algfont{DejaVu Sans Mono}
 \makeatletter
@@ -119,14 +117,14 @@ LuaTeX を想定していますが、それ以外の場合でも若干の変更�
 
 <div class="pdf-wrapper" style="margin-bottom: 20px;">
 <div class="pdf-iframe">
-<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/pseudocode5.pdf#zoom=page-fit"></iframe>
+<iframe src="/pdf.js/web/viewer.html?file=/public/pdf/pseudocode5.pdf#zoom=page-fit"></iframe>
 </div>
 </div>
 
 この例では出てきませんが `\Return` には行番号が振られないようになっています。
 あったほうがよいならば再定義する必要があります。
 
-```latex
+```language-latex
 \let\oldReturn\Return
 \renewcommand{\Return}{\State\oldReturn}
 ```
@@ -135,7 +133,7 @@ LuaTeX を想定していますが、それ以外の場合でも若干の変更�
 
 自分の好みのデザインとその出力です。
 
-```latex
+```language-latex
 documentclass[12pt]{beamer}
 \usepackage{amsmath}
 \usepackage[noend]{algpseudocode}
@@ -180,6 +178,6 @@ documentclass[12pt]{beamer}
 
 <div class="pdf-wrapper" style="margin-bottom: 20px;">
 <div class="pdf-iframe">
-<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/pseudocode6.pdf#zoom=page-fit"></iframe>
+<iframe src="/pdf.js/web/viewer.html?file=/public/pdf/pseudocode6.pdf#zoom=page-fit"></iframe>
 </div>
 </div>
