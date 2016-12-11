@@ -6,10 +6,8 @@ import os
 with open('posts.json', mode='r') as f:
     posts = json.load(f)
 
-langs = ['en', 'ja']
-
 for post in posts:
-    for lang in langs:
+    for lang in post['langs']:
         path = os.path.join('pug', lang, 'posts', post['id'] + '.pug')
         with open(path, mode='w+') as f:
             s = ('extends ../../_layout\n'

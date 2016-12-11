@@ -2,10 +2,21 @@
   {
     "id": "arabluatex",
     "titles": {
+      "ja": "LaTeX で RTL（右横書き）の文書をつくる",
+      "en": "Write Right-to-Left"
+    },
+    "langs": ["ja"],
+    "posted": "2016-05-23",
+    "modified": "2016-07-12",
+    "mathematical": false
+  },
+  {
+    "id": "type-arabic",
+    "titles": {
       "ja": "アラビア文字を含むファイルの編集方法",
       "en": "Edit files with Arabic letters"
     },
-    "langs": ["en", "ja"],
+    "langs": ["ja"],
     "posted": "2016-05-23",
     "modified": "2016-07-12",
     "mathematical": false
@@ -27,6 +38,7 @@
       "ja": "LaTeX で擬似コード",
       "en": "Pseudocode in LaTeX"
     },
+    "langs": ["en", "ja"],
     "posted": "2015-08-24",
     "modified": "2015-09-21"
   },
@@ -36,6 +48,7 @@
       "ja": "攻殻機動隊 S.A.C. の OP をロシア語で歌いたい",
       "en": "?"
     },
+    "langs": ["en", "ja"],
     "posted": "2015-04-14",
     "modified": "2016-03-22",
     "mathematical": false

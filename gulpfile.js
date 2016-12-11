@@ -22,7 +22,8 @@ const highlighter = {
     './bower_components/prism/components/prism-makefile.min.js',
     './bower_components/prism/components/prism-latex.min.js',
     './bower_components/prism/components/prism-java.min.js',
-    './bower_components/prism/components/prism-scala.min.js'
+    './bower_components/prism/components/prism-scala.min.js',
+    './bower_components/prism/components/prism-vim.min.js'
   ]
 };
 
