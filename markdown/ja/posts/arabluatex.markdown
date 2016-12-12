@@ -19,7 +19,7 @@
     [Polyglossia](https://www.ctan.org/pkg/polyglossia){target="\_blank"} を使えば多くの
     LTR の文字（正確には言語）の組版が可能です。
 
-    ![ltr](/public/img/ltr.jpg){class="centered-image" style="max-width: 300px;"}
+    ![](/public/img/ltr.jpg){class="centered-image" style="max-width: 300px;"}
 
 2. __（下の行に移る）右横書き__  
     アラビア文字やヘブライ文字などで使われています。
@@ -27,14 +27,14 @@
     日本語の文書でも左横書きが普及する前に使われていたことがあります。
     LaTeX での扱いは次節以降で説明します。
 
-    ![rtl](/public/img/rtl.jpg){class="centered-image" style="max-width: 300px;"}
+    ![](/public/img/rtl.jpg){alt="Right-to-Left" class="centered-image" style="max-width: 300px;"}
 
 
 3. __上から下、右の列から左の列へ移る縦書き__  
     日本語や中国語を縦書きしたときの書法です。
     __TBRL__ (top-to-down, right-to-left) と呼ばれることがあります。
 
-     ![tbrl](/public/img/tbrl.jpg){class="centered-image" style="max-height: 300px;"}
+     ![](/public/img/tbrl.jpg){alt="Top-to-Down, Right-to-Left" class="centered-image" style="max-height: 300px;"}
 
     日本語が TBRL なので LaTeX における TBRL を説明した日本語の資料はたくさん見つかります。
 
@@ -52,7 +52,7 @@
     左右反転させた文字を右から左に書いていく書法です。
     その様子が牛車で畑を耕す様子に似ているため名付けられました。
 
-     ![boustrophedon](/public/img/boustrophedon.jpg){class="centered-image" style="max-width: 300px;"}
+     ![](/public/img/boustrophedon.jpg){alt="Boustrophedon" class="centered-image" style="max-width: 300px;"}
 
     LaTeX において牛耕式を扱う方法については、以下の記事が参考になります。
 
@@ -64,7 +64,7 @@
 アラビア文字やヘブライ文字を打ち込んでも、その文字が出力されるようになりました。
 例えば __MS Word__ では書字方向を切り替える機能を使ってアラビア文字の混じった文書を作成できます。
 
-![word-arabic](/public/img/word-arabic.png){class="centered-image" style="max-width: 500px;"}
+![word-arabic](/public/img/word-arabic.png){alt="Arabic in MS Word" class="centered-image" style="max-width: 500px;"}
 
 少し厄介な点は、__行ごとに書字方向を切り替えなければならない__、ということです。
 もちろん可読性の観点から同一の行内に LTR/RTL が入り乱れているのはよくないと思いますが、
@@ -79,7 +79,7 @@ MS Word を使わずエディタで編集するという方法もあります。
 また文字どうしが重なり合って非常に見にくい__ということです。
 広く使われている Gnome ターミナルは、まだアラビア文字の合字に対応していないのです。
 
-![word-arabic](/public/img/terminal-arabic.png){class="centered-image" style="max-width: 100%;"}
+![word-arabic](/public/img/terminal-arabic.png){alt="Arabic in Terminal" class="centered-image" style="max-width: 100%;"}
 
 解決方法のひとつは Vim の GUI 版である GVim を使うことです。
 これについては[別の記事](/ja/type-arabic.html)で書きましたので興味があればご覧ください。
@@ -149,32 +149,55 @@ Fontspec が使えるので、いろいろなフォントを試したりする�
 ArabTeX と比べてまだ実装されていない機能が多いのですが、
 アラビア語の範囲では問題ないと思います。
 
+<div class="pdf-wrapper" style="margin-bottom: 20px;">
+<div class="pdf-iframe">
+<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/arabluatex-example.pdf#zoom=page-fit"></iframe>
+</div>
+</div >
+
 ```language-latex
-\documentclass[12pt]{article}
+\documentclass[usepdftitle=false]{beamer}
+\usetheme{metropolis}
 \usepackage{fontspec}
 \usepackage{arabluatex}
-\setmainfont{Linux Libertine O}[Ligatures=TeX]
 \newfontfamily\arabicfont{Amiri}[%
     Script=Arabic,     % enable ligatures
     RawFeature={+anum, % use eastern arabic numerals
     +ss05}]            % put kasrah below shadda
-\newfontfamily\translitfont{FreeSerif}[Ligatures=TeX]
+\newfontfamily\translitfont{Linux Libertine O}[Ligatures=TeX]
 \SetTranslitFont{\translitfont}
 \SetTranslitStyle{\upshape}
 \SetTranslitConvention{dmg} % `loc` or `dmg`
-\usepackage{gb4e,cgloss4e}
-\noautomath
+\usepackage[hiragino-pron,deluxe,expert]{luatexja-preset}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\hypersetup{%
+    unicode=true,
+    backref=true,
+    hidelinks=true,
+    pdfinfo={%
+        Title={アラビア文字},
+        Author={アラビア太郎},
+    }
+}
+\title{アラビア文字}
+\author{アラビア太郎}
 \begin{document}
 
-\arb[fullvoc]{`indanA muta`addidaTuN min 'l-xarAy"'i.ti.}
-\arb[trans]{`indanA muta`addidaTuN min 'l-xarAy"'i.ti.}
+\begin{frame}
+\frametitle{おはよう}
+アラビア語で「おはよう」は \arb[fullvoc]{.sabA.hu 'l-xayri} と言います。
+発音は\arb[trans]{.sabA.hu 'l-xayri}です。
+返答するときは例えば「光の朝」 \arb[fullvoc]{.sabA.hu 'l-nUri} と答えます。
+発音は\arb[trans]{.sabA.hu 'l-nUri}です。
 
-\begin{exe}
-    \ex%
-    \gll {`indanā} {muta`addidat\textsuperscript{{\thinspace}un}} {min} {al-ḫarā'iṭi} \\
-         {with+we.1\textsc{pl}.\textsc{gen}} {multiple.\textsc{f}.\textsc{sg}.\textsc{nom}} {of} {map.\textsc{pl}.\textsc{gen}.\textsc{def}} \\
-    \trans {We have multiple maps.}
-\end{exe}
+\bigskip
+
+転記方法は\texttt{dmg} (Deutsche Morgenländische Gesellschaft)と
+\texttt{loc} (Liberty of Congress)のほうがあります。
+前者はダイアクリティカルマークを多く使い、
+後者はそれをあまり使いません。
+この文書は\texttt{dmg}で作っています。
+\end{frame}
 
 \end{document}
 ```
@@ -187,9 +210,43 @@ ArabTeX (ArabLuaTeX) を扱うのは少し難しいかもしれません…。
 ### 日本語でも RTL をやってみる
 
 ArabLuaTeX の中身を見るとわかりますが、
-`\a` で囲まれている部分が RTL になります。
+`\textdir TRT` で囲まれている部分が RTL になります。
 これを使えば RTL で日本語が書けるので、少し遊んでみました。
 
+<div class="pdf-wrapper" style="margin-bottom: 20px;">
+<div class="pdf-iframe">
+<iframe src="/pdf.js/web/viewer.html?file=/assets/pdf/rtl-japanese#zoom=page-fit"></iframe>
+</div>
+</div >
+
+```language-latex
+\documentclass[usepdftitle=false]{beamer}
+\usetheme{metropolis}
+\usepackage[hiragino-pron,deluxe,expert]{luatexja-preset}
+\hypersetup{%
+    unicode=true,
+    backref=true,
+    hidelinks=true,
+    pdfinfo={%
+        Title={右横書き},
+        Author={右横書き太郎},
+    }
+}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\newcommand\RTL[1]{\begingroup\textdir TRT #1\endgroup}
+\begin{document}
+\begin{frame}
+\frametitle{RTL}
+「\RTL{これってもしかして}」
+
+「\RTL{書字方向が}」
+
+「\RTL{入れ替わってる！？}」
+
+鉤括弧は工夫したほうがよさそうですね。
+\end{frame}
+\end{document}
+```
 
 ## まとめ
 
