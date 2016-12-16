@@ -1,0 +1,34 @@
+[
+  {
+    "id": "steepest-descent",
+    "created": "2015-07-13",
+    "modified": "2015-12-02",
+    "type": "others",
+    "title": "最急降下法",
+    "src": "./documents/SteepestDescent/steepest-descent.pdf"
+  },
+  {
+    "id": "prml04",
+    "created": "2015-05-15",
+    "modified": "2016-07-16",
+    "type": "勉強会資料",
+    "title": "PRML Chapter 4",
+    "src": "documents/PRML/prml04.pdf"
+  },
+  {
+    "id": "fsnlp05",
+    "created": "2015-03-02",
+    "modified": "2015-10-17",
+    "type": "勉強会資料",
+    "title": "Foundations of Statistical Natural Language Processing 5 Collocations",
+    "src": "documents/FSNLP/fsnlp05.pdf"
+  },
+  {
+    "id": "graduate-thesis",
+    "created": "2011-12-09",
+    "modified": "2015-10-17",
+    "type": "論文紹介",
+    "title": "一般化された横断性条件の必要性について",
+    "src": "pdf/graduate-thesis.pdf"
+  }
+]

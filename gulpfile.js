@@ -11,6 +11,7 @@ const cssnext = require('postcss-cssnext');
 const processors = [ cssnext() ];
 const dist = 'dist';
 const posts = require('./posts.json');
+const pdfs = require('./pdfs.json');
 const index = 'pug/**/index.pug';
 const sassFiles = ['sass/**/*.s+(a|c)ss'];
 const img = 'img/**/*';
@@ -53,6 +54,10 @@ gulp.task('post', () => {
   });
 });
 
+gulp.task('pdf', () =>
+  pdfs.forEach(pdf => gulp.src(pdf.src).pipe(gulp.dest('dist/public/pdf')))
+);
+
 gulp.task('sass', () =>
   gulp.src(sassFiles)
     .pipe(sasslint())
@@ -73,7 +78,8 @@ gulp.task('index', () => {
         pretty: true,
         data: {
           lang: lang,
-          posts: posts
+          posts: posts,
+          pdfs: pdfs
         }
       }))
       .pipe(gulp.dest('dist'))
@@ -86,7 +92,7 @@ gulp.task('highlighter', () => {
   gulp.src(highlighter.js).pipe(gulp.dest('dist/public/js'));
 });
 
-gulp.task('default', ['pdfjs', 'img', 'highlighter', 'index', 'post', 'sass']);
+gulp.task('default', ['pdfjs', 'pdf', 'img', 'highlighter', 'index', 'post', 'sass']);
 
 gulp.task('server', ['default'],() => {
   gulp.watch(['pug/**/*.pug', '!pug/**/index.pug'], ['post']);

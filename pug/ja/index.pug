@@ -10,3 +10,12 @@ block content
         span.strong= post.posted
         | &nbsp;
         span.text-muted (modified:&nbsp; #{post.modified})
+  h2 PDF files
+  ul
+    for pdf in pdfs
+      li
+        a(href=`/public/pdf/${pdf.id}.pdf`)= pdf.title
+        | &nbsp;–&nbsp;
+        span.strong= pdf.created
+        | &nbsp;
+        span.text-muted (modified:&nbsp; #{pdf.modified})
