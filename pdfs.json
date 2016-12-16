@@ -1,11 +1,55 @@
 [
   {
+    "id": "metaphor-detection-with-topic-transition.pdf",
+    "created": "2016-09-12",
+    "type": "論文紹介",
+    "title": "Metaphor Detection with Topic Transition, Emotion and Cognition in Context",
+    "src": "documents/SNLP/metaphor-detection-with-topic-transition.pdf"
+  },
+  {
+    "id": "tokyocl.pdf",
+    "created": "2016-06-15",
+    "type": "勉強会資料",
+    "title": "自然言語処理でメタファーをどう扱うか – いくつかのモデルとデータの紹介",
+    "src": "documents/TokyoCL/tokyocl.pdf"
+  },
+  {
+    "id": "incremental-ccg.pdf",
+    "created": "2016-01-06",
+    "type": "論文紹介",
+    "title": "An Incremental Algorithm for Transition-based CCG Parsing",
+    "src": "documents/Syntax/incremental-ccg.pdf"
+  },
+  {
+    "id": "prml14",
+    "created": "2015-09-24",
+    "modified": "2015-10-04",
+    "type": "勉強会資料",
+    "title": "PRML Chapter 14",
+    "src": "documents/PRML/prml14.pdf"
+  },
+  {
+    "id": "semantic-vsm.pdf",
+    "created": "2015-08-31",
+    "type": "論文紹介",
+    "title": "Ontologically Grounded Multi-sense Representation Learning for Semantic Vector Space Models",
+    "src": "documents/SNLP/semantic-vsm.pdf"
+  },
+  {
+    "id": "prml10.4-10.6.pdf",
+    "created": "2015-08-07",
+    "modified": "2015-09-09",
+    "type": "勉強会資料",
+    "title": "PRML 10.4 – 10.6",
+    "src": "documents/PRML/prml10.4-10.6.pdf"
+  },
+  {
     "id": "steepest-descent",
     "created": "2015-07-13",
     "modified": "2015-12-02",
     "type": "others",
     "title": "最急降下法",
-    "src": "./documents/SteepestDescent/steepest-descent.pdf"
+    "src": "documents/SteepestDescent/steepest-descent.pdf"
   },
   {
     "id": "prml04",

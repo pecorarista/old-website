@@ -9,7 +9,8 @@ block content
         | &nbsp;–&nbsp;
         span.strong= post.posted
         | &nbsp;
-        span.text-muted (modified:&nbsp; #{post.modified})
+        if modified
+          span.text-muted (modified:&nbsp; #{post.modified})
   h2 PDF files
   ul
     for pdf in pdfs
@@ -18,4 +19,5 @@ block content
         | &nbsp;–&nbsp;
         span.strong= pdf.created
         | &nbsp;
-        span.text-muted (modified:&nbsp; #{pdf.modified})
+        if pdf.modified
+          span.text-muted (modified:&nbsp; #{pdf.modified})
