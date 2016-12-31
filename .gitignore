@@ -5,3 +5,4 @@ dist/
 *.html
 pug/ja/posts/*
 pug/en/posts/*
+*.woff

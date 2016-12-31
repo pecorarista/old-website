@@ -39,6 +39,11 @@ gulp.task('img', () =>
   gulp.src(img).pipe(gulp.dest('dist/public/img/'))
 );
 
+gulp.task('font', () =>
+  gulp.src('DoulosSIL-R.woff')
+    .pipe(gulp.dest('dist/public/fonts/'))
+);
+
 gulp.task('post', () => {
   ['en', 'ja'].forEach(lang => {
     gulp.src([`pug/${lang}/\*\*/\*.pug`, `!pug/${lang}/index.pug`])
@@ -92,7 +97,7 @@ gulp.task('highlighter', () => {
   gulp.src(highlighter.js).pipe(gulp.dest('dist/public/js'));
 });
 
-gulp.task('default', ['pdfjs', 'pdf', 'img', 'highlighter', 'index', 'post', 'sass']);
+gulp.task('default', ['pdfjs', 'pdf', 'img', 'font', 'highlighter', 'index', 'post', 'sass']);
 
 gulp.task('server', ['default'],() => {
   gulp.watch(['pug/**/*.pug', '!pug/**/index.pug'], ['post']);

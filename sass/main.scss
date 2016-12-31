@@ -17,6 +17,25 @@ body {
   min-height: 100vh;
 }
 
+:lang(en),
+:lang(ru) {
+  font-family: 'Roboto', sans-serif;
+}
+
+:lang(ja) {
+  font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
+}
+
+@font-face {
+  font-family: DoulosSIL;
+  src: url('/public/fonts/DoulosSIL-R.woff') format('woff');
+}
+
+.ipa {
+  font-family: DoulosSIL, serif;
+  font-size: 18px;
+}
+
 main {
   flex: 1 0 auto;
 }

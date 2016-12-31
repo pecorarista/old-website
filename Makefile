@@ -38,3 +38,7 @@ pdf.js/build/generic/web/viewer.html:
 	@cd pdf.js; \
 		npm install; \
 		PATH=$(shell npm bin):${PATH} gulp generic
+
+a:
+	wget 'http://scripts.sil.org/cms/scripts/render_download.php?format=file&media_id=CharisSIL-5.000-web.zip&filename=CharisSIL-5.000-web.zip' -O 'CharisSIL.zip'
+	mkdir -p font
